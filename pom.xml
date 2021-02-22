@@ -35,7 +35,6 @@
 			<version>2.8.0</version>
 			<scope>compile</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
@@ -104,8 +103,15 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
 				<version>3.9.1</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.wagon</groupId>
+						<artifactId>wagon-ssh</artifactId>
+						<version>3.4.2</version>
+					</dependency>
+				</dependencies>
 			</plugin>
-		</plugins>
+			</plugins>
 	</build>
 	<reporting>
 		<plugins>
@@ -116,4 +122,10 @@
 			</plugin>
 		</plugins>
 	</reporting>
+	<distributionManagement>
+		<site>
+			<id>shrek</id>
+			<url>scp://@shrek.unideb.hu:2222/home/kunanett/public_html/${project.artifactId}</url>
+		</site>
+	</distributionManagement>
 </project>
